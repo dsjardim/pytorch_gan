@@ -16,9 +16,7 @@ So, in this post, we will get to know about GANs and how it can be usefull when 
 
 ## Introdution
 
-![Architecture](./GAN.png)
-
-*Fig. 1: The architecture of a GAN.*
+![Architecture](./GAN.png "*Fig. 1: The architecture of a GAN.*")
 
 ## The Generator
 
