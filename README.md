@@ -2,4 +2,4 @@
 
 Understanding GANs using Pytorch.
 
-Please check the 'BlogPost1.md' and 'BlogPost2.md' files.
+Please check the `BlogPost1.md` and `BlogPost2.md` files.
