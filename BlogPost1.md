@@ -1,6 +1,6 @@
 # Understanding the world of Generative Adversarial Networks (Part 1)
 
-Generative Adversarial Networks (GANs) belong to the family of generative models <cite>[OpenAI][1]</cite>. 
+Generative Adversarial Networks (GANs) belong to the family of generative models (see <cite>[OpenAI][1]</cite>). 
 Making use of Deep Learning (DL) techniques, we can train GANs to generate many types of new data, such as images, texts, and also tabular data.
 In recent years, GANs have gained much popularity in the field of DL. And all of this started after the famous paper by <cite>[Goodfellow et al][2]</cite>.
 
