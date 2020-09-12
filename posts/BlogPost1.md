@@ -22,7 +22,15 @@ So, in this post, we will get to know about GANs and how it can be usefull when 
 
 ## The Generator
 
+![Generator](./GAN_Generator.png)
+
+*Fig. 2: The Generator Training.*
+
 ## The Discriminator
+
+![Discriminator](./GAN_Discriminator.png)
+
+*Fig. 2: The Discriminator Training.*
 
 ## Applications
 
