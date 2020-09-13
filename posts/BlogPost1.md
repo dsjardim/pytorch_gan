@@ -1,7 +1,9 @@
 # Understanding the world of Generative Adversarial Networks (Part 1)
 
 Generative Adversarial Networks (GANs) belong to the family of generative models (see [OpenAI][1]). 
+
 Making use of Deep Learning (DL) techniques, we can train GANs to generate many types of new data, such as images, texts, and also tabular data.
+
 In recent years, GANs have gained much popularity in the field of DL. And all of this started after the famous paper by [Goodfellow et al][2].
 
 So, in this post, we will get to know about GANs and how it can be useful when working on Machine Learning.
@@ -17,8 +19,11 @@ So, in this post, we will get to know about GANs and how it can be useful when w
 ## 1. Introduction
 
 The basic idea of GANs is that they are used to generate images that never existed before. 
+
 They learn about the context of the training samples we have (text, music, objects, animals and so forth) and create new versions of those data that never existed.
+
 Under the hood, they are an unsupervised learning technique. This is because, while training a GAN, we do not provide any label or target to the model.
+
 Probably, the most popular use of GANs are that realistic examples of fake people images (which do not look fake at all) as you can see in the following image.
 
 
@@ -52,7 +57,8 @@ Probably, the most popular use of GANs are that realistic examples of fake peopl
 
 ## 4. Applications
 
-Nowadays there are lots of applications for GANs.
+Nowadays there are lots of applications for GANs. Most of them are related to the Image Processing area.
+
 Bellow we are going to explore some of them.
 
 * Data Augmentation
