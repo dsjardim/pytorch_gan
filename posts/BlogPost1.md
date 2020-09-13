@@ -90,12 +90,15 @@ Bellow we are going to explore some of them.
 
 One of the most currently use of GANs is for data augmentation.
 
-Let's pick a scenario where we have a Machine Learning (ML) model performing badly, but It is happening because It was trained with a poor dataset with almost no variability.
+Let's pick a scenario where we have a Machine Learning (ML) algorithm performing badly, and it's happening because it was trained with a poor dataset with almost no variability.
 
-It is in here that GANs can be used for. Whenever we have a poor dataset, we can generate more data from It using GANs. 
+It is in here that GANs can be used for. 
+
+Whenever we have a poor dataset, we can generate more data from It using GANs. 
 Then, we probably would have a ML model with better performance 
 
 So, it is well known that GANs are a very interesting and cool way to generate synthetic data. 
+
 If you became curious about it, you can check this [paper][5] out.
 
 
@@ -103,12 +106,28 @@ If you became curious about it, you can check this [paper][5] out.
 
 The core idea of face anonymization is to remove all privacy-sensitive information and also generate a new, realistic face for data visual integrity.
 
-Researches in this area are becoming very popular mostly because applying this technique, companies can use any data for their needs without consent.
+Research in this area are becoming very popular because applying this technique, companies can use any data for their needs without consent.
 
-You can read more about it in this [paper][6], which the authors proposed a GAN that automatically anonymize faces in images while retaining the original data distribution.
+You can read more about it in this [paper][6], which the authors proposed a GAN, called DeepPrivacy, that automatically anonymize faces in images while retaining the original data distribution.
 
 
 ### Text to Image
+
+Text to Image is another cool application that GANs are used.
+
+Here we can generate images from a given sentence. An example is shown in Fig. 4.
+
+![Text2Images](./images/text_to_image.png)
+
+*Fig. 4: Results of using GAN to generate images from sentences. Font [Scott Reed et al][7]*
+
+
+
+This task is very challenging because it demands a enormous amount of data and computational resources as well.
+
+You can see some results in this [paper][7] by Scott Reed et al.
+
+
 ### Photos to Emojis
 
 ## Conclusion
@@ -120,3 +139,4 @@ You can read more about it in this [paper][6], which the authors proposed a GAN 
 [4]: https://thispersondoesnotexist.com/
 [5]: https://arxiv.org/pdf/1904.09135.pdf
 [6]: https://arxiv.org/pdf/1909.04538.pdf
+[7]: http://proceedings.mlr.press/v48/reed16.pdf
