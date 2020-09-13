@@ -35,21 +35,33 @@ Probably, the most popular use of GANs are that realistic examples of fake peopl
 
 ## 2. How It Works
 
+The general architecture of a GAN is represented by the following image.
+
 ![Architecture](./images/GAN.png)
 
-*Fig. 1: The architecture of a GAN.*
+*Fig. 2: The architecture of a GAN.*
+
+And as we can see, a GAN has two components: the generator and the discriminator.
+
+* Generator - creates new images
+* Discriminator - predict whether the image are real or fake (created from the Generator) 
+
+Both components are neural networks that compete with each other. In other words, the Generator tries to fool the Discriminator with fake images.
+
+Now we are going through the training process of both components and understand how they work as well.   
+
 
 ### The Generator
 
 ![Generator](./images/GAN_Generator.png)
 
-*Fig. 2: Generator Training.*
+*Fig. 3: Generator Training.*
 
 ### The Discriminator
 
 ![Discriminator](./images/GAN_Discriminator.png)
 
-*Fig. 3: Discriminator Training.*
+*Fig. 4: Discriminator Training.*
 
 
 ## 3. The Learning Process
