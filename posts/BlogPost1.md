@@ -87,10 +87,30 @@ After computing both losses, they are summed. Then, the backpropagation algorith
 
 ### Training the Generator
 
+The generator's job is to generate fake images from a given random noise. Epoch after epoch, it tries to produce more realistic data.
+
+These fake images are used as inputs of the discriminator and they act as the negative samples for the discriminator training process.
+
+So, for training the generator we have to go through the following steps:
+
+1. Create the random noise;
+2. Use this noise as input of the generator to get fake data;
+3. Use the generated fake data as input of the discriminator;
+4. Compute the loss from the discriminator classification;
+5. The loss from the discriminator is used to penalize the generator for producing bad data instances;
+6. Finally, we have the loss from the generator outputs. It will be used to penalize the generator itself if it's not able to fool the discriminator.
+
+This process is represented in Fig. 4.
+
 ![Generator](./images/GAN_Generator.png)
 
 *Fig. 4: Training the generator in a GAN. Font: The author.*
 
+As you can see in Fig. 4, after we get the generator loss, the backpropagation happens both through the discriminator and the generator. 
+
+This process need to happen, because we have to check with the discriminator how close the generator is to create realistic fake data. So, we are not going to update the weights of the discriminator. We just use this feedback together with the loss of the generator itself to update the weights of the generator.
+
+Therefore, repeating this process for several epochs, eventually the generator will fool the discriminator.
 
 
 ## 4. Applications
