@@ -86,7 +86,7 @@ Nowadays there are lots of applications for GANs. Most of them are related to th
 
 Bellow we are going to explore some of them.
 
-* Data Augmentation
+### Data Augmentation
 
 One of the most currently use of GANs is for data augmentation.
 
@@ -99,7 +99,7 @@ So, it is well known that GANs are a very interesting and cool way to generate s
 If you became curious about it, you can check this [paper][5] out.
 
 
-* Face Anonymization 
+### Face Anonymization 
 
 The core idea of face anonymization is to remove all privacy-sensitive information and also generate a new, realistic face for data visual integrity.
 
@@ -108,8 +108,8 @@ Researches in this area are becoming very popular mostly because applying this t
 You can read more about it in this [paper][6], which the authors proposed a GAN that automatically anonymize faces in images while retaining the original data distribution.
 
 
-* Text to Image
-* Photos to Emojis
+### Text to Image
+### Photos to Emojis
 
 ## Conclusion
 
