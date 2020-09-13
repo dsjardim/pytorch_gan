@@ -41,14 +41,23 @@ The general architecture of a GAN is represented by the following image.
 
 *Fig. 2: The architecture of a GAN.*
 
-And as we can see, a GAN has two components: the generator and the discriminator.
+And as we can see, a GAN has two components: the **generator** and the **discriminator**.
 
 * Generator - creates new images
 * Discriminator - predict whether the image are real or fake (created from the Generator) 
 
-Both components are neural networks that compete with each other. In other words, the Generator tries to fool the Discriminator with fake images.
+Both components are Neural Networks that compete with each other. In other words, the Generator tries to fool the Discriminator with fake images.
 
-Now we are going through the training process of both components and understand how they work as well.   
+While training a GAN, the **Generator** tries to generate new fake data from a given noisy sample space. 
+And after each iteration, It will learn how to create images as much realistic as possible (regarding our dataset).
+
+At the same time, the **Discriminator** tries to distinguish the real data from the generated fake data (created by the generator). 
+While training the discriminator, we have to feed It with both real and generated data. 
+
+After a certain number of training epochs, eventually the the discriminator won’t be able to tell whether the data is real or fake. 
+When this time comes, we can stop the training and use the generator to create new data for our need.
+
+Now we are going through the training process of both components.   
 
 
 ### The Generator
