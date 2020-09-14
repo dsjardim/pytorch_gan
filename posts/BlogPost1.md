@@ -1,8 +1,6 @@
 # Understanding the World of Generative Adversarial Networks (Part 1)
 
-Generative Adversarial Networks (GANs) were introduced by [Goodfellow et al][2] in 2014. They belong to the family of generative models (see [OpenAI][1]). 
-
-Making use of Deep Learning (DL) techniques, we can train GANs to generate many types of new data, such as images, texts, and also tabular data.
+Generative Adversarial Networks (GANs) were introduced by [Goodfellow et al][2] in 2014. They belong to the family of generative models (see [OpenAI][1]). Making use of Deep Learning (DL) techniques, we can train GANs to generate many types of new data, such as images, texts, and also tabular data.
 
 In recent years, GANs have gained much popularity in the field of DL. So, in this post, we will get to know about this model and how It can be useful.
 
@@ -16,11 +14,7 @@ In recent years, GANs have gained much popularity in the field of DL. So, in thi
 
 ## 1. Introduction
 
-The basic idea of GANs is that they are used to generate images that never existed before. 
-
-So, they can learn about the context of the dataset we have (such as text, music, objects, animals and so forth) and create new versions of those data that never existed.
-
-Under the hood, they are an unsupervised learning technique. This is because, while training a GAN, we do not provide any label or target to the model.
+The basic idea of GANs is that they are used to generate images that never existed before. So, they can learn about the context of the dataset we have (such as text, music, objects, animals and so forth) and create new versions of those data that never existed. Under the hood, they are an unsupervised learning technique. This is because, while training a GAN, we do not provide any label or target to the model.
 
 Probably, the most popular use of GANs are that realistic examples of fake people images (which do not look fake at all) as you can see in Fig. 1.
 
@@ -38,13 +32,10 @@ The general architecture of a GAN is represented by the following image.
 *Fig. 2: The architecture of a GAN. Font: The author.*
 
 
-And as we can see, a GAN has two components: the **generator** and the **discriminator**.
-
-Both components are Neural Networks that compete with each other. In other words, the Generator tries to fool the Discriminator with fake images.
+And as we can see, a GAN has two components: the **generator** and the **discriminator**. Both components are Neural Networks that compete with each other. In other words, the Generator tries to fool the Discriminator with fake images.
 
 While training a GAN, the **Generator** tries to generate new fake data from a given noisy sample space. 
 And after each iteration, It will learn to create images as much realistic as possible (regarding our dataset).
-
 At the same time, the **Discriminator** tries to distinguish the real data from the generated fake data (created by the generator). 
 While training the discriminator, we have to feed It with both real and generated data. 
 
@@ -88,9 +79,7 @@ After computing both losses, they are summed. Then, the backpropagation algorith
 ### Training the Generator
 
 The generator's job is to generate fake images from a given random noise. Epoch after epoch, it tries to produce more realistic data.
-
 These fake images are used as inputs of the discriminator and they act as the negative samples for the discriminator training process.
-
 So, for training the generator we have to go through the following steps:
 
 1. Create the random noise;
@@ -123,24 +112,18 @@ Bellow we are going to explore some of them.
 
 One of the most currently use of GANs is for data augmentation.
 
-Let's pick a scenario where we have a Machine Learning (ML) algorithm performing badly, and it's happening because it was trained with a poor dataset with almost no variability.
-
-It is in here that GANs can be used for. 
+Let's pick a scenario where we have a Machine Learning (ML) algorithm performing badly, and it's happening because it was trained with a poor dataset with almost no variability. It is in here that GANs can be used for. 
 
 Whenever we have a poor dataset, we can generate more data from It using GANs. 
 Then, we probably would have a ML model with better performance 
 
-So, it is well known that GANs are a very interesting and cool way to generate synthetic data. 
-
-If you became curious about it, you can check this [paper][5] out.
+It is well known that GANs are a very interesting and cool way to generate synthetic data. If you became curious about it, you can check this [paper][5] out.
 
 
 ### Face Anonymization 
 
 The core idea of face anonymization is to remove all privacy-sensitive information and also generate a new, realistic face for data visual integrity.
-
 Research in this area are becoming very popular because applying this technique, companies can use any data for their needs without consent.
-
 Fig. 4 shows a result of using a GAN to remove sensitive information of an image.
 
 ![FaceAnonimization](./images/face_anonymization.png)
@@ -154,7 +137,6 @@ You can read more about it in this [paper][6], which the authors proposed a GAN,
 ### Text to Image
 
 Text to Image is another cool application that GANs are used.
-
 Here we can generate images from a given sentence. An example is shown in Fig. 5.
 
 ![Text2Images](./images/text_to_image.png)
@@ -163,18 +145,14 @@ Here we can generate images from a given sentence. An example is shown in Fig. 5
 
 
 This task is very challenging because it demands a enormous amount of data and computational resources as well.
-
 You can see some results in this [paper][7] by Scott Reed et al.
 
 
 ### Photo to Avatar
 
 There are a bunch of mobile apps and sites that are performing this task nowadays.
-
 Most of them probably use a GAN as part of its backend.
-
 This is very useful when we don't want to use our own photos as profile pictures of sites we have accounts.
-
 You can see an example of it in Fig 6. But you can also check this [paper][8] out if you want to see more results.
 
 ![Photos2Avatars](./images/photo_to_avatar.png)
