@@ -4,7 +4,9 @@
 In the first part of this series we understand how GANs works and what they are used for.
 
 We already know that generative models consists of two neural networks (the Discriminator and the Generator).
-So, in this article we will learn how to train and evaluate a GAN to generate handwritten digits. And, to do this, we will be using Pytorch as our framework.
+So, in this article we will learn how to train and evaluate a GAN to generate handwritten digits.
+
+We will be using Pytorch as the framework and the full code is available in [this GitHub repository](https://github.com/dsjardim/pytorch_gan).
 
 
 ## Loading Data
@@ -13,8 +15,10 @@ When we are talking about training these models, if our dataset doesn't have a c
 
 Lets take a look in some of these training images.
 
-![GIF](./images/real_images.png)
+![RealImages](./images/real_images.png)
 
+Pytorch provides an easy way to download the training samples using a few lines of code.
+But before downloading the data, we have to define some transformations we need to apply on our data before feeding it into the training pipeline. We do this using the ```torchvision.transforms```. It basically transform each image to tensor format and normalize it.
 
 ```python
 transform = transforms.Compose([
@@ -22,6 +26,8 @@ transform = transforms.Compose([
                                 transforms.Normalize(mean=(0.5),
                                                      std=(0.5))])
 ```
+
+Now, with the following code snippet, we download the data, apply the transformations in it and load it to DataLoader, which split the data into batches and provides iterators over the dataset.
 
 ```python
 mnist = torchvision.datasets.MNIST(root='PATH_TO_STORE_TRAINSET',
