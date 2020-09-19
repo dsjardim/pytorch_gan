@@ -16,13 +16,54 @@ Lets take a look in some of these training images.
 ![GIF](./images/real_images.png)
 
 
+```python
+transform = transforms.Compose([
+                                transforms.ToTensor(),
+                                transforms.Normalize(mean=(0.5),
+                                                     std=(0.5))])
+```
 
+```python
+mnist = torchvision.datasets.MNIST(root='PATH_TO_STORE_TRAINSET',
+                                   train=True,
+                                   transform=transform,
+                                   download=True)
 
+train_loader = torch.utils.data.DataLoader(dataset=mnist,
+                                           batch_size=batch_size, 
+                                           shuffle=True)
+```
 
 ## Building the Model
 
 
+```python
+D = nn.Sequential(
+    nn.Linear(image_size, hidden_size),
+    nn.LeakyReLU(0.2),
+    nn.Linear(hidden_size, hidden_size),
+    nn.LeakyReLU(0.2),
+    nn.Linear(hidden_size, 1),
+    nn.Sigmoid())
+```
+```python
+G = nn.Sequential(
+    nn.Linear(latent_size, hidden_size),
+    nn.ReLU(),
+    nn.Linear(hidden_size, hidden_size),
+    nn.ReLU(),
+    nn.Linear(hidden_size, image_size),
+    nn.Tanh())
+```
+
 ## Training Time
+
+```python
+criterion = nn.BCELoss()
+d_optimizer = torch.optim.Adam(D.parameters(), lr=0.0002)
+g_optimizer = torch.optim.Adam(G.parameters(), lr=0.0002)
+```
+
 
 
 ## Evaluation
