@@ -1,4 +1,4 @@
-# Understanding the World of Generative Adversarial Networks (Part 1)
+# Understanding the World of Generative Adversarial Networks - Part 1
 
 Generative Adversarial Networks (GANs) were introduced by [Goodfellow et al][2] in 2014. They belong to the family of generative models (see [OpenAI][1]). Making use of Deep Learning (DL) techniques, we can train GANs to generate many types of new data, such as images, texts, and also tabular data.
 
