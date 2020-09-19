@@ -70,9 +70,50 @@ d_optimizer = torch.optim.Adam(D.parameters(), lr=0.0002)
 g_optimizer = torch.optim.Adam(G.parameters(), lr=0.0002)
 ```
 
+### Training the Discriminator
 
+```python
+outputs = D(images)
+d_loss_real = criterion(outputs, real_labels)
+real_score = outputs
+
+z = torch.randn(batch_size, latent_size).to(device)
+z = Variable(z)
+fake_images = G(z)
+
+outputs = D(fake_images)
+d_loss_fake = criterion(outputs, fake_labels)
+fake_score = outputs
+
+d_loss = d_loss_real + d_loss_fake
+```
+
+### Training the Generator
+
+```python
+z = torch.randn(batch_size, latent_size).to(device)
+z = Variable(z)
+fake_images = G(z)
+outputs = D(fake_images)
+
+g_loss = criterion(outputs, real_labels)
+```
 
 ## Evaluation
+
+```python
+D.load_state_dict(torch.load('./save/D--300.pth'))
+G.load_state_dict(torch.load('./save/G--300.pth'))
+
+latent_size = 64
+batch_size = 25
+
+z = torch.randn(batch_size, latent_size).to(device)
+fake_images = G(z)
+
+fake_images_np = fake_images.cpu().detach().numpy()
+fake_images_np = fake_images_np.reshape(fake_images_np.shape[0], 28, 28)
+```
 
 ![GIF](./images/fake_images.gif)
 
