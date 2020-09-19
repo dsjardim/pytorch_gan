@@ -12,6 +12,7 @@ So, in this article we will learn how to train and evaluate a GAN to generate ha
 When we are talking about training these models, if our dataset doesn't have a considerable number of training samples, it's very hard to achieve good results for any metric. So, in order to train our model, we are going to use the [MNIST Handwritten Digits][1] dataset, which has 60.000 training samples of handwritten digits.
 
 Lets take a look in some of these training images.
+
 ![GIF](./images/real_images.png)
 
 
