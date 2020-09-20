@@ -21,8 +21,7 @@ Pytorch provides an easy way to download the training samples using a few lines 
 But before downloading the data, we have to define some transformations we need to apply on our data before feeding it into the training pipeline. We do this using the ```torchvision.transforms```. It basically transform each image to tensor format and normalize it.
 
 ```python
-transform = transforms.Compose([
-                                transforms.ToTensor(),
+transform = transforms.Compose([transforms.ToTensor(),
                                 transforms.Normalize(mean=(0.5),
                                                      std=(0.5))])
 ```
@@ -140,13 +139,23 @@ for epoch in range(num_epochs):
 ```
 
 
-## Evaluation
+## Evaluation and Conclusions
+
+We trained our GAN through 300 epochs and after that we evaluate our model.
+During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
+
+![Accuracy](./images/accuracy_gan.png)
+![Loss](./images/loss_gan.png)
 
 ![GIF](./images/fake_images.gif)
 
-## Conclusions
+For an evaluation, we test our GAN in order to generate some handwritten digits. And the result are the following
 
+![GenImages](./images/generated_images.png)
 
+As you can see, there is no difference between these generated images from those from the MNIST dataset we saw in the beginning of this article.
+
+Therefore, it proves that we can use GANs to augment our dataset. Here we have worked with a dataset of images, but we can train and use this models for any kind of dataset. The only constraint is that the dataset have to be a large number of training samples. 
 
 
 [1]: http://yann.lecun.com/exdb/mnist/
