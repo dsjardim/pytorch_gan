@@ -15,7 +15,8 @@ When we are talking about training these models, if our dataset doesn't have a c
 
 Lets take a look in some of these training images.
 
-![RealImages](./images/real_images.png)
+<img src="./images/real_images.png" alt="RealImages" width="400"/>
+
 
 Pytorch provides an easy way to download the training samples using a few lines of code.
 But before downloading the data, we have to define some transformations we need to apply on our data before feeding it into the training pipeline. We do this using the ```torchvision.transforms```. It basically transform each image to tensor format and normalize it.
@@ -144,16 +145,15 @@ for epoch in range(num_epochs):
 We trained our GAN through 300 epochs and after that we evaluate our model.
 During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
 
-<!-- ![Accuracy](./images/accuracy_gan.png =100x20) -->
 <img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/>
+<img src="./images/loss_gan.png" alt="Loss" width="400"/>
 
-![Loss](./images/loss_gan.png)
-
-![GIF](./images/fake_images.gif)
+<img src="./images/fake_images.gif" alt="GIF" width="400"/>
 
 For an evaluation, we test our GAN in order to generate some handwritten digits. And the result are the following
 
-![GenImages](./images/generated_images.png)
+<img src="./images/generated_images.png" alt="GenImages" width="400"/>
+
 
 As you can see, there is no difference between these generated images from those from the MNIST dataset we saw in the beginning of this article.
 
