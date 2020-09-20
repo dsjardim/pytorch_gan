@@ -9,7 +9,7 @@ So, in this article we will learn how to train and evaluate a GAN to generate ha
 We will be using Pytorch as the framework and the full code is available in [this GitHub repository](https://github.com/dsjardim/pytorch_gan).
 
 
-## Loading Data
+## Loading the Data
 
 When we are talking about training these models, if our dataset doesn't have a considerable number of training samples, it's very hard to achieve good results for any metric. So, in order to train our model, we are going to use the [MNIST Handwritten Digits][1] dataset, which has 60.000 training samples of handwritten digits. And each image have its resolution defined as 28 x 28 (width, height). 
 
@@ -43,6 +43,7 @@ train_loader = torch.utils.data.DataLoader(dataset=mnist,
 ## Building the Model
 
 Both discriminator and generator are Multilayer Perceptrons (MLPs) with two hidden layers.
+
 In Pytorch, the ```torch.nn``` module allow us to build both neural networks very easelly.
 Also, the ```nn.Sequential``` wraps the layers in the network.
 
@@ -65,7 +66,9 @@ Also, the output layer is followed by a ```Sigmoid``` function because we want t
 Probably, you must be wondering why do we have 784 units in the first layer. Good! 
 It is because we flatten out each image before sending it inside the neural network. (28 x 28 = 784)
 
-Finally, the generator have the same architecture. But different parameters for each layer. Lets take a look at the code used to build our generator.
+The generator have the same architecture. But different parameters for each layer. 
+
+Lets take a look at the code used to build it.
 
 ```python
 G = nn.Sequential(
@@ -78,6 +81,7 @@ G = nn.Sequential(
 ```
 
 You can see that the parameters appear to be almost reversed compared to the discriminator.
+
 It make sense, because here we are not classifying a given image, we are trying to create a new one.
 So, in the first layer, we receive a random noise vector as input. 
 And the following layers try to fit this input to generate a image that look like our training data. 
@@ -91,50 +95,52 @@ d_optimizer = torch.optim.Adam(D.parameters(), lr=0.0002)
 g_optimizer = torch.optim.Adam(G.parameters(), lr=0.0002)
 ```
 
-### Training the Discriminator
-
 ```python
-outputs = D(images)
-d_loss_real = criterion(outputs, real_labels)
-real_score = outputs
+for epoch in range(num_epochs):
+    for i, (images, _) in enumerate(train_loader):
+        images = images.view(batch_size, -1).to(device)
+        
+        real_labels = torch.ones(batch_size, 1).to(device) ## 1 for real samples
+        fake_labels = torch.zeros(batch_size, 1).to(device) ## 0 for fake samples
 
-z = torch.randn(batch_size, latent_size).to(device)
-z = Variable(z)
-fake_images = G(z)
+        # ================================================================== #
+        #                      Train the discriminator                       #
+        # ================================================================== #
+        outputs = D(images)
+        d_loss_real = criterion(outputs, real_labels)
+        real_score = outputs
 
-outputs = D(fake_images)
-d_loss_fake = criterion(outputs, fake_labels)
-fake_score = outputs
+        z = torch.randn(batch_size, latent_size).to(device)
+        z = Variable(z)
+        fake_images = G(z)
+        
+        outputs = D(fake_images)
+        d_loss_fake = criterion(outputs, fake_labels)
+        fake_score = outputs
 
-d_loss = d_loss_real + d_loss_fake
+        d_loss = d_loss_real + d_loss_fake
+        
+        reset_grad()
+        d_loss.backward()
+        d_optimizer.step()
+
+        # ================================================================== #
+        #                        Train the generator                         #
+        # ================================================================== #
+        z = torch.randn(batch_size, latent_size).to(device)
+        z = Variable(z)
+        fake_images = G(z)
+        outputs = D(fake_images)
+
+        g_loss = criterion(outputs, real_labels)
+
+        reset_grad()
+        g_loss.backward()
+        g_optimizer.step()
 ```
 
-### Training the Generator
-
-```python
-z = torch.randn(batch_size, latent_size).to(device)
-z = Variable(z)
-fake_images = G(z)
-outputs = D(fake_images)
-
-g_loss = criterion(outputs, real_labels)
-```
 
 ## Evaluation
-
-```python
-D.load_state_dict(torch.load('./save/D--300.pth'))
-G.load_state_dict(torch.load('./save/G--300.pth'))
-
-latent_size = 64
-batch_size = 25
-
-z = torch.randn(batch_size, latent_size).to(device)
-fake_images = G(z)
-
-fake_images_np = fake_images.cpu().detach().numpy()
-fake_images_np = fake_images_np.reshape(fake_images_np.shape[0], 28, 28)
-```
 
 ![GIF](./images/fake_images.gif)
 
