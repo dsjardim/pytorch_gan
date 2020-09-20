@@ -143,18 +143,26 @@ for epoch in range(num_epochs):
 ## Evaluation and Conclusions
 
 We trained our GAN through 300 epochs and after that we evaluate our model.
-During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
 
-<!-- <img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/> -->
-<!-- <img src="./images/loss_gan.png" alt="Loss" width="400"/> -->
+During training, we stored information about the Loss for both discriminator and generator. Also, we got information about the Accuracy of the discriminator for classifying images as real or fake.
+
+Lets take a look at this data in form of graphs.
+
 <img src="./images/acc_loss.png" alt="AccLoss" width="800"/>
+
+First, analyzing the accuracy of the discriminator. It starts classifying real images with high accuracy, but after a while, it starts to make mistakes more often, which is expected. At the same time, for fake images classification, the discriminator start the training with high accuracy as well (close to 0 because it's a fake image) and after a while, it starts to make mistakes because the generator are creating images very close to the training images. 
+
+Now, lets talk about the loss of both discriminator and generator.
+We can see that the loss of the generator decreases and the loss of the discriminator increases.
+This is what we want! Because it indicates that our generator learned to create images that reproduce the training data. And this is why the discriminator starts to make mistakes. It no longer knows whether a given image is real or fake.
+
+The following GIF present the learning process of the generator.
 
 <img src="./images/fake_images.gif" alt="GIF" width="400"/>
 
 For an evaluation, we test our GAN in order to generate some handwritten digits. And the result are the following
 
-<img src="./images/generated_images.png" alt="GenImages" width="200"/>
-
+<img src="./images/generated_images.png" alt="GenImages" width="300"/>
 
 As you can see, there is no difference between these generated images from those from the MNIST dataset we saw in the beginning of this article.
 
