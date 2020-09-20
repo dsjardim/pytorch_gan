@@ -144,8 +144,8 @@ for epoch in range(num_epochs):
 We trained our GAN through 300 epochs and after that we evaluate our model.
 During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
 
-![Accuracy](./images/accuracy_gan.png)
-![Loss](./images/loss_gan.png)
+![Accuracy](./images/accuracy_gan.png =100x20)
+![Loss](./images/loss_gan.png =100x20)
 
 ![GIF](./images/fake_images.gif)
 
