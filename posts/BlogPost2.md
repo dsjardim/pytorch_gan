@@ -145,14 +145,15 @@ for epoch in range(num_epochs):
 We trained our GAN through 300 epochs and after that we evaluate our model.
 During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
 
-<img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/>
-<img src="./images/loss_gan.png" alt="Loss" width="400"/>
+<!-- <img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/> -->
+<!-- <img src="./images/loss_gan.png" alt="Loss" width="400"/> -->
+<img src="./images/acc_loss.png" alt="AccLoss" width="400"/>
 
 <img src="./images/fake_images.gif" alt="GIF" width="400"/>
 
 For an evaluation, we test our GAN in order to generate some handwritten digits. And the result are the following
 
-<img src="./images/generated_images.png" alt="GenImages" width="400"/>
+<img src="./images/generated_images.png" alt="GenImages" width="200"/>
 
 
 As you can see, there is no difference between these generated images from those from the MNIST dataset we saw in the beginning of this article.
