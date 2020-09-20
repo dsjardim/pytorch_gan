@@ -147,7 +147,7 @@ During training, we stored information about the Accuracy and the Loss for both 
 
 <!-- <img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/> -->
 <!-- <img src="./images/loss_gan.png" alt="Loss" width="400"/> -->
-<img src="./images/acc_loss.png" alt="AccLoss" width="400"/>
+<img src="./images/acc_loss.png" alt="AccLoss" width="800"/>
 
 <img src="./images/fake_images.gif" alt="GIF" width="400"/>
 
