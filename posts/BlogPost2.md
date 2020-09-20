@@ -145,7 +145,7 @@ We trained our GAN through 300 epochs and after that we evaluate our model.
 During training, we stored information about the Accuracy and the Loss for both Discriminator and Generator.
 
 <!-- ![Accuracy](./images/accuracy_gan.png =100x20) -->
-<img src="./images/accuracy_gan.png" alt="Accuracy" width="200"/>
+<img src="./images/accuracy_gan.png" alt="Accuracy" width="400"/>
 
 ![Loss](./images/loss_gan.png)
 
