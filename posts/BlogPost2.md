@@ -94,7 +94,7 @@ Here is where the "magic" happens.
 As we discussed on the [previous post](https://github.com/dsjardim/pytorch_gan/blob/master/posts/BlogPost1.md) of this series, training a GAN consists of training the generator and the discriminator.
 
 Before going through the training loop, we have to define the optimizer and the loss function for each neural network. 
-For both of them, we will use the ```Adam``` as optimizer and for the loss function, we will use the ```BCELoss``` because we are working on a binary problem. 
+In this example, we will use the ```Adam``` as optimizer and for the loss function, we will use the ```BCELoss``` because we are working on a binary problem. 
 You can check the full code and execute it yourself in this [notebook](https://github.com/dsjardim/pytorch_gan/blob/master/notebooks/DCGAN_train.ipynb).
 
 With that been defined, we can start the training.
