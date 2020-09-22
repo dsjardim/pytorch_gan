@@ -1,4 +1,3 @@
-<!-- MLP with 2 hidden layers for the Discriminator and Generator -->
 # Understanding the World of Generative Adversarial Networks - Part 2
 
 In the first part of this series we understand how GANs works and what they are used for.
@@ -39,6 +38,7 @@ train_loader = torch.utils.data.DataLoader(dataset=mnist,
                                            batch_size=batch_size, 
                                            shuffle=True)
 ```
+
 
 ## Building the Model
 
@@ -89,55 +89,68 @@ And the following layers try to fit this input to generate a image that look lik
 
 ## Training Time
 
-```python
-criterion = nn.BCELoss()
-d_optimizer = torch.optim.Adam(D.parameters(), lr=0.0002)
-g_optimizer = torch.optim.Adam(G.parameters(), lr=0.0002)
-```
+Here is where the "magic" happens.
+
+As we discussed on the [previous post](https://github.com/dsjardim/pytorch_gan/blob/master/posts/BlogPost1.md) of this series, training a GAN consists of training the generator and the discriminator.
+
+Before going through the training loop, we have to define the optimizer and the loss function for each neural network. 
+For both of them, we will use the ```Adam``` as optimizer and for the loss function, we will use the ```BCELoss``` because we are working on a binary problem. 
+You can check the full code and execute it yourself in this [notebook](https://github.com/dsjardim/pytorch_gan/blob/master/notebooks/DCGAN_train.ipynb).
+
+With that been defined, we can start the training.
+So, for each epoch of our training loop, we iterate over the data using the  ```train_loader``` variable we created at the beginning of this article.
+As the ```train_loader``` return our data in form of batches, the first thing to do is to create our labels for training both discriminator and generator.
+These labels consists of two tensors, one for the real samples and another for the fake ones. You can see in the following code snippet how we create them.
 
 ```python
-for epoch in range(num_epochs):
-    for i, (images, _) in enumerate(train_loader):
-        images = images.view(batch_size, -1).to(device)
-        
-        real_labels = torch.ones(batch_size, 1).to(device) ## 1 for real samples
-        fake_labels = torch.zeros(batch_size, 1).to(device) ## 0 for fake samples
-
-        # ================================================================== #
-        #                      Train the discriminator                       #
-        # ================================================================== #
-        outputs = D(images)
-        d_loss_real = criterion(outputs, real_labels)
-        real_score = outputs
-
-        z = torch.randn(batch_size, latent_size).to(device)
-        z = Variable(z)
-        fake_images = G(z)
-        
-        outputs = D(fake_images)
-        d_loss_fake = criterion(outputs, fake_labels)
-        fake_score = outputs
-
-        d_loss = d_loss_real + d_loss_fake
-        
-        reset_grad()
-        d_loss.backward()
-        d_optimizer.step()
-
-        # ================================================================== #
-        #                        Train the generator                         #
-        # ================================================================== #
-        z = torch.randn(batch_size, latent_size).to(device)
-        z = Variable(z)
-        fake_images = G(z)
-        outputs = D(fake_images)
-
-        g_loss = criterion(outputs, real_labels)
-
-        reset_grad()
-        g_loss.backward()
-        g_optimizer.step()
+images = images.view(batch_size, -1).to(device)
+real_labels = torch.ones(batch_size, 1).to(device) ## 1 for real samples
+fake_labels = torch.zeros(batch_size, 1).to(device) ## 0 for fake samples
 ```
+
+The next step is to feed the discriminator with some real images. So, the output of it will be a probability of each image being real or fake.
+To measure how the discriminator is predicting these images, we call the loss function with two parameters: the output of the discriminator and the real label we just created. Then, we will know how the error rate of the discriminator.
+
+
+```python
+outputs = D(images)
+d_loss_real = criterion(outputs, real_labels)
+real_score = outputs
+```
+
+Now, we have to feed the discriminator with some fake images.
+So, we create a random noise and pass it to the generator. And the output of it should be something like the real images.
+Having done that, we feed the discriminator with these fake images and we go through the same process as before. 
+But now, we will have the error rate of the discriminator for the prediction of fake images.
+Finally, we sum those two error rates to obtain the real loss of the discriminator. Therefore, this loss will be used to backpropagate the error and update the weights of the discriminator.
+
+```python
+z = torch.randn(batch_size, latent_size).to(device)
+fake_images = G(z)
+
+outputs = D(fake_images)
+d_loss_fake = criterion(outputs, fake_labels)
+fake_score = outputs
+
+d_loss = d_loss_real + d_loss_fake
+```
+
+The next step and final step is the process of teaching the generator to create fake images that look like the real ones.
+To do that, we create a random noise and pass it to the generator. And it will generate the fake images.
+
+Then, we feed the discriminator with these fake images and we will obtain the probability of each image being real or fake.
+We call the loss function and use these probabilities as one of the parameters. The second parameter will be the real labels. Why? (you should be asking).
+We do that because we want to know how far the generator is to fool the discriminator. And we use this error rate to backpropagate on the generator and update its weights.  
+
+```python
+z = torch.randn(batch_size, latent_size).to(device)
+fake_images = G(z)
+outputs = D(fake_images)
+
+g_loss = criterion(outputs, real_labels)
+```
+
+At the beginning of the training process, these fake images will look like noise. But after a while, the generator will learn to create very good looking fake images. And we will see some examples on the next part of this post.
 
 
 ## Evaluation and Conclusions
