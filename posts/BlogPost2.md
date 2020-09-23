@@ -97,8 +97,8 @@ Before going through the training loop, we have to define the optimizer and the 
 In this example, we will use the ```Adam``` as optimizer and for the loss function, we will use the ```BCELoss``` because we are working on a binary problem. 
 You can check the full code and execute it yourself in this [notebook](https://github.com/dsjardim/pytorch_gan/blob/master/notebooks/DCGAN_train.ipynb).
 
-With that been defined, we can start the training.
-So, for each epoch of our training loop, we iterate over the data using the  ```train_loader``` variable we created at the beginning of this article.
+With that been said, we can start the training.
+So, for each epoch of our training loop, we iterate over the entire data using the  ```train_loader``` variable we created at the beginning of this article.
 As the ```train_loader``` return our data in form of batches, the first thing to do is to create our labels for training both discriminator and generator.
 These labels consists of two tensors, one for the real samples and another for the fake ones. You can see in the following code snippet how we create them.
 
@@ -109,7 +109,7 @@ fake_labels = torch.zeros(batch_size, 1).to(device) ## 0 for fake samples
 ```
 
 The next step is to feed the discriminator with some real images. So, the output of it will be a probability of each image being real or fake.
-To measure how the discriminator is predicting these images, we call the loss function with two parameters: the output of the discriminator and the real label we just created. Then, we will know how the error rate of the discriminator.
+To measure how the discriminator is predicting these images, we call the loss function with two parameters: the output of the discriminator and the real label we just created. Then, we will know the error rate of the discriminator when handling real images.
 
 
 ```python
@@ -119,9 +119,11 @@ real_score = outputs
 ```
 
 Now, we have to feed the discriminator with some fake images.
-So, we create a random noise and pass it to the generator. And the output of it should be something like the real images.
+
+To do that, we create a random noise and pass it to the generator. The output of it should be something like the real images.
 Having done that, we feed the discriminator with these fake images and we go through the same process as before. 
 But now, we will have the error rate of the discriminator for the prediction of fake images.
+
 Finally, we sum those two error rates to obtain the real loss of the discriminator. Therefore, this loss will be used to backpropagate the error and update the weights of the discriminator.
 
 ```python
@@ -135,12 +137,14 @@ fake_score = outputs
 d_loss = d_loss_real + d_loss_fake
 ```
 
-The next step and final step is the process of teaching the generator to create fake images that look like the real ones.
+The next and final step is the process of teaching the generator to create fake images that look like the real ones.
+
 To do that, we create a random noise and pass it to the generator. And it will generate the fake images.
 
 Then, we feed the discriminator with these fake images and we will obtain the probability of each image being real or fake.
 We call the loss function and use these probabilities as one of the parameters. The second parameter will be the real labels. Why? (you should be asking).
-We do that because we want to know how far the generator is to fool the discriminator. And we use this error rate to backpropagate on the generator and update its weights.  
+We do that because we want to know how far the generator is to fool the discriminator. 
+And we use this error rate to backpropagate on the generator and update its weights.  
 
 ```python
 z = torch.randn(batch_size, latent_size).to(device)
