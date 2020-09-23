@@ -29,7 +29,7 @@ Probably, the most popular use of GANs are that realistic examples of fake peopl
 
 The general architecture of a GAN is represented by the following image.
 
-<img src="./images/GAN.png" alt="Architecture" width="400"/>
+<img src="./images/GAN.png" alt="Architecture" width="600"/>
 
 *Fig. 2: The architecture of a GAN. Font: The author.*
 
@@ -69,7 +69,7 @@ To train the discriminator, we go through a few steps:
 
 This process is represented in Fig. 3.
 
-<img src="./images/GAN_Discriminator.png" alt="Discriminator" width="400"/>
+<img src="./images/GAN_Discriminator.png" alt="Discriminator" width="600"/>
 
 *Fig. 3: Training the discriminator in a GAN. Font: The author.*
 
@@ -99,7 +99,7 @@ So, for training the generator we have to go through the following steps:
 
 This process is represented in Fig. 4.
 
-<img src="./images/GAN_Generator.png" alt="Generator" width="400"/>
+<img src="./images/GAN_Generator.png" alt="Generator" width="600"/>
 
 *Fig. 4: Training the generator in a GAN. Font: The author.*
 
@@ -138,7 +138,7 @@ The core idea of face anonymization is to remove all privacy-sensitive informati
 Research in this area are becoming very popular because applying this technique, companies can use any data for their needs without consent.
 Fig. 4 shows a result of using a GAN to remove sensitive information of an image.
 
-<img src="./images/face_anonymization.png" alt="FaceAnonimization" width="400"/>
+<img src="./images/face_anonymization.png" alt="FaceAnonimization" width="500"/>
 
 *Fig. 4: Face Anonymization using GAN. Font: [Hakon Hukkelas et al][6] paper.*
 
