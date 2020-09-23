@@ -44,7 +44,7 @@ train_loader = torch.utils.data.DataLoader(dataset=mnist,
 
 Both discriminator and generator are Multilayer Perceptrons (MLPs) with two hidden layers.
 
-In Pytorch, the ```torch.nn``` module allow us to build both neural networks very easelly.
+In Pytorch, the ```torch.nn``` module allow us to build both neural networks very easily.
 Also, the ```nn.Sequential``` wraps the layers in the network.
 
 Lets look at the following code snippet, which builds the Discriminator of our GAN.
@@ -143,7 +143,7 @@ To do that, we create a random noise and pass it to the generator. And it will g
 
 Then, we feed the discriminator with these fake images and we will obtain the probability of each image being real or fake.
 We call the loss function and use these probabilities as one of the parameters. The second parameter will be the real labels. Why? (you should be asking).
-We do that because we want to know how far the generator is to fool the discriminator. 
+We do that because we want to know how far the generator is to fooling the discriminator. 
 And we use this error rate to backpropagate on the generator and update its weights.  
 
 ```python

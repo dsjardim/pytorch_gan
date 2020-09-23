@@ -58,10 +58,10 @@ To train the discriminator, we go through a few steps:
 
 1. Feed the discriminator with real data;
 2. Compute loss from the discriminator classification;
-2. Feed the discriminator with fake data;
-3. Compute loss from the discriminator classification;
-3. Sum the two computed losses;
-4. In the final step, the weights of the discriminator network get updated through the backpropagation process.
+3. Feed the discriminator with fake data;
+4. Compute loss from the discriminator classification;
+5. Sum the two computed losses;
+6. In the final step, the weights of the discriminator network get updated through the backpropagation process.
 
 This process is represented in Fig. 3.
 
@@ -69,12 +69,12 @@ This process is represented in Fig. 3.
 
 *Fig. 3: Training the discriminator in a GAN. Font: The author.*
 
-After pass the real data through the discriminator, we get the probability of this data being real (label 1) or fake (label 0). If the discriminator misclassifies the data (either when it classifies the real data as fake or when it classifies the fake data as real), then it will generate a higher loss value. 
+<!-- After pass the real data through the discriminator, we get the probability of this data being real (label 1) or fake (label 0). If the discriminator misclassifies the data (either when it classifies the real data as fake or when it classifies the fake data as real), then it will generate a higher loss value. --> 
 
-This process is repeated for the fake data as well to obtain the loss using the fake data.
+<!-- This process is repeated for the fake data as well to obtain the loss using the fake data. -->
 
-After computing both losses, they are summed. Then, the backpropagation algorithm goes into action to update the weights of the discriminator.
-
+<!-- After computing both losses, they are summed. Then, the backpropagation algorithm goes into action to update the weights of the discriminator.
+ -->
 
 ### Training the Generator
 
@@ -87,7 +87,7 @@ So, for training the generator we have to go through the following steps:
 3. Use the generated fake data as input of the discriminator;
 4. Compute the loss from the discriminator classification;
 5. The loss from the discriminator is used to penalize the generator for producing bad data instances;
-6. Finally, we have the loss from the generator outputs. It will be used to penalize the generator itself if it's not able to fool the discriminator.
+6. Finally, we have the loss from the generator outputs. It will be used to penalize the generator itself if it's not fooling the discriminator.
 
 This process is represented in Fig. 4.
 
@@ -95,11 +95,13 @@ This process is represented in Fig. 4.
 
 *Fig. 4: Training the generator in a GAN. Font: The author.*
 
-As you can see in Fig. 4, after we get the generator loss, the backpropagation happens both through the discriminator and the generator. 
+<!-- After we get the generator loss, the backpropagation happens through both discriminator and generator. --> 
 
-This process need to happen, because we have to check with the discriminator how close the generator is to create realistic fake data. So, we are not going to update the weights of the discriminator. We just use this feedback together with the loss of the generator itself to update the weights of the generator.
+<!-- This process need to happen because we have to check with the discriminator how close the generator is to create realistic fake data. So, we are not going to update the weights of the discriminator. We just use this feedback together with the loss of the generator itself to update the weights of the generator.
 
-Therefore, repeating this process for several epochs, eventually the generator will fool the discriminator.
+Therefore, repeating this process for several epochs, eventually the generator will fool the discriminator. -->
+
+We repeat this process for several epochs, then eventually the generator will fool the discriminator as we expected.
 
 
 ## 4. Applications
